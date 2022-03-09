@@ -567,6 +567,7 @@ you have trained your new model on the new data.
 ### Project Links
 
 [W&B Project](https://wandb.ai/dulo/nyc_airbnb?workspace=user-dulo)
+[GitHub Project](https://github.com/JobCollins/nd0821-c2-build-model-workflow-starter.git)
 
 
 ## License
