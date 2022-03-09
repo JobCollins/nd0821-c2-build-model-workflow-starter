@@ -55,7 +55,7 @@ def go(args):
     ######################################
     # Use run.use_artifact(...).file() to get the train and validation artifact (args.trainval_artifact)
     # and save the returned path in train_local_pat
-    trainval_local_path = run.use_artifact(args.trainval_artifact) # YOUR CODE HERE
+    trainval_local_path = run.use_artifact(args.trainval_artifact).file() # YOUR CODE HERE
     ######################################
 
     X = pd.read_csv(trainval_local_path)
@@ -117,11 +117,13 @@ def go(args):
     # YOUR CODE HERE
     ######################################
     artifact = wandb.Artifact(
-        args.output_artifact,
+        name=args.output_artifact,
         type="model_export",
         description="Random Forest pipeline export",
-        metadata=args.rf_config
+        metadata=rf_config
     )
+    artifact.add_dir("random_forest_dir")
+    run.log_artifact(artifact)
 
     # Plot feature importance
     fig_feat_imp = plot_feature_importance(sk_pipe, processed_features)
@@ -132,9 +134,7 @@ def go(args):
     # Now log the variable "mae" under the key "mae".
     # YOUR CODE HERE
     ######################################
-    run.log({
-        "mae":mae
-    })
+    run.summary['mae']=mae
 
     # Upload to W&B the feture importance visualization
     run.log(
