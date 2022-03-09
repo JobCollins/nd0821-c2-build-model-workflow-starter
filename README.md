@@ -566,7 +566,7 @@ you have trained your new model on the new data.
 
 ### Project Links
 
-[W&B Project]: https://wandb.ai/dulo/nyc_airbnb?workspace=user-dulo
+[W&B Project](https://wandb.ai/dulo/nyc_airbnb?workspace=user-dulo)
 
 
 ## License
